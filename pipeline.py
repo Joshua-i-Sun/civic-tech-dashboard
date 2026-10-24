@@ -866,7 +866,7 @@ def parse_args(argv=None):
     parser.add_argument("--z-cutoff", type=float, default=1.5,
                          help="Composite disparity z-score cutoff (default: 1.5 std dev)")
     parser.add_argument("--workers", type=int, default=4)
-        parser.add_argument("--fixture-dir", default=None,
+    parser.add_argument("--fixture-dir", default=None,
                          help="Read sources from local JSON fixtures instead of the network")
     parser.add_argument("--join-mode", choices=("dedup", "join"), default="dedup",
                          help="dedup: best source wins per key. "
@@ -876,15 +876,15 @@ def parse_args(argv=None):
 
 def main(argv=None):
     args = parse_args(argv)
-        config = build_config(
-             output_dir=args.output_dir,
-             cache_db_path=args.cache_db,
-             cache_ttl=args.cache_ttl,
-             z_cutoff=args.z_cutoff,
-             workers=args.workers,
-             fixture_dir=args.fixture_dir,
-             join_mode=args.join_mode,
-        )
+    config = build_config(
+        output_dir=args.output_dir,
+        cache_db_path=args.cache_db,
+        cache_ttl=args.cache_ttl,
+        z_cutoff=args.z_cutoff,
+        workers=args.workers,
+        fixture_dir=args.fixture_dir,
+        join_mode=args.join_mode,
+    )
 
     pipeline = ETLPipeline(config)
     try:
